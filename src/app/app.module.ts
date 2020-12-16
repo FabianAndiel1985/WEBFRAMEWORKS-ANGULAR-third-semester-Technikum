@@ -7,6 +7,8 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { EnterFormComponent } from './add-user/enter-form/enter-form.component';
+import { LandingComponent } from './landing/landing.component';
+import { DisplayUsersComponent } from './display-users/display-users.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { EnterFormComponent } from './add-user/enter-form/enter-form.component';
     FooterComponent,
     NavbarComponent,
     AddUserComponent,
-    EnterFormComponent
+    EnterFormComponent,
+    LandingComponent,
+    DisplayUsersComponent
   ],
   imports: [
     BrowserModule,
