@@ -9,6 +9,11 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { EnterFormComponent } from './add-user/enter-form/enter-form.component';
 import { LandingComponent } from './landing/landing.component';
 import { DisplayUsersComponent } from './display-users/display-users.component';
+import {MenuModule} from 'primeng/menu';
+import {MenubarModule} from 'primeng/menubar';
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +27,11 @@ import { DisplayUsersComponent } from './display-users/display-users.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MenuModule,
+    MenubarModule,
+    SelectButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

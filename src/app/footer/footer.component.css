@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-p {
+#footer {
 	font-family: 'Montserrat', sans-serif;
-  font-size: max(0.8vw,14px);
+	font-size: max(0.8vw,14px);
+	height:30px;
+	position: fixed;
+	bottom:0;
+	left:0;
+	right:0;
+	background-color: #f8f9fa;
 }

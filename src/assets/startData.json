@@ -1,0 +1,23 @@
+{
+	"users":{
+		"u1":{
+			"id":"1",
+			"firstname":"customer1",
+			"lastname":"customer1",
+			"birthday":"01.10.1990"
+		}
+		,
+		"u2":{
+			"id":"2",
+			"firstname":"customer2",
+			"lastname":"customer2",
+			"birthday":"02.10.1990"
+		},
+		"u3":{
+			"id":"3",
+			"firstname":"customer3",
+			"lastname":"customer3",
+			"birthday":"03.10.1990"
+		}
+	}
+}
