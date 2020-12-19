@@ -1,6 +1,7 @@
+import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
 import { SelectItem, PrimeNGConfig } from "primeng/api";
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-display-users',
@@ -10,11 +11,12 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class DisplayUsersComponent implements OnInit {
 
   stateOptions: any[];
+  users:any[];
 
   value1: string = "off";
 
 
-  constructor(private primeNGConfig: PrimeNGConfig) {
+  constructor(private primeNGConfig: PrimeNGConfig, private httpService:HttpService) {
     this.stateOptions = [
       { label: "Off", value: "off" },
       { label: "On", value: "on" }
@@ -28,14 +30,21 @@ export class DisplayUsersComponent implements OnInit {
   onToggle() {
     if(this.value1 == "off") {
       this.value1 = "on";
-
     }
 
     else {
       this.value1 = "off";
-      // Benutzer entfernen
+      this.displayAllUsers();
     }
 
+  }
+
+
+  displayAllUsers(){
+   this.httpService.getAllUsers().subscribe(response=> this.users =  Object.keys(response)
+   .map(function(key) {
+       return response[key];
+   }));
   }
 
 

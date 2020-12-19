@@ -13,6 +13,8 @@ import {MenuModule} from 'primeng/menu';
 import {MenubarModule} from 'primeng/menubar';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {HttpClientModule} from '@angular/common/http';
+import {ButtonModule} from 'primeng/button';
+
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import {HttpClientModule} from '@angular/common/http';
     MenuModule,
     MenubarModule,
     SelectButtonModule,
-    HttpClientModule
+    HttpClientModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

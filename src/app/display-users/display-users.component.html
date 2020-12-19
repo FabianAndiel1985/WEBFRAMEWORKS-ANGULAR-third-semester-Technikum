@@ -1,2 +1,28 @@
 <h5>Single Selection</h5>
 <p-selectButton [options]="stateOptions" (ngModel)="value1" (click)="onToggle()"  optionLabel="label" optionValue="value"></p-selectButton>
+
+
+
+<table *ngIf="value1 == 'on' && users" class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">firstname</th>
+      <th scope="col">lastname</th>
+      <th scope="col">birthday</th>
+      <th scope="col">actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <th scope="row"> {{user.id}} </th>
+      <td>{{user.firstname}}</td>
+      <td>{{user.lastname}}</td>
+      <td>{{user.birthday}}</td>
+      <td>
+        <button pButton type="button" icon="pi pi-check" iconPos="left" label="Edit"></button>
+        <button pButton type="button" icon="pi pi-ban" iconPos="left" label="Delete" class="p-button-danger ml-2"></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
