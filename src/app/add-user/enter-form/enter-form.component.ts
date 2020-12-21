@@ -1,4 +1,6 @@
+import { HttpService } from './../../http.service';
 import { Component, OnInit } from '@angular/core';
+import {User} from '../../types';
 
 @Component({
   selector: 'app-enter-form',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EnterFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpService:HttpService) { }
+
+    id:string;
+    firstname:string;
+    lastname:string;
+    birthday:string;
+
+    onSubmit() {
+      let user = new User(this.id,this.firstname,this.lastname,this.birthday);
+      this.httpService.signUpUser(user);
+    }
 
   ngOnInit(): void {
   }

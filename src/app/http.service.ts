@@ -1,3 +1,4 @@
+import { User } from './types';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,8 +13,11 @@ export class HttpService {
    return this.httpClient.get("https://useradministration-55705-default-rtdb.firebaseio.com/users.json")
   }
 
+  signUpUser(user:User) {
+    this.httpClient.post('https://useradministration-55705-default-rtdb.firebaseio.com/users.json',user).subscribe(response=> console.log(response))
+  }
+
   deleteUser(index:string) {
-    console.log(`https://useradministration-55705-default-rtdb.firebaseio.com/users/u${index}.json`);
     this.httpClient.delete(`https://useradministration-55705-default-rtdb.firebaseio.com/users/u${index}.json`).subscribe(response=>console.log(response));
   }
 

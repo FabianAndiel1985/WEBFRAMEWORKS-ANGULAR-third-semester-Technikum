@@ -3,6 +3,8 @@
 
 
 
+<!-- USER AUslAGERN IN EIGENE KOMPONENTE UND INPUT VERWENDEN -->
+
 <table *ngIf="value1 == 'on' && users" class="table">
   <thead>
     <tr>
@@ -20,8 +22,8 @@
       <td>{{user.lastname}}</td>
       <td>{{user.birthday}}</td>
       <td>
-        <button pButton type="button" icon="pi pi-check" iconPos="left" label="Edit"></button>
-        <button type="button" (click)="onDelete($event)" id="{{user.id}}" class="btn btn-danger">Delete</button>
+        <button type="button"  (click)="onEdit($event)" id="{{user.id}}" class="btn btn-primary">Edit </button>
+        <button type="button" (click)="onDelete($event)" id="{{user.id}}" class="btn btn-danger ml-2">Delete</button>
       </td>
     </tr>
   </tbody>

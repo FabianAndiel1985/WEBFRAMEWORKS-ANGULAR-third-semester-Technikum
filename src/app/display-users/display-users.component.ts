@@ -39,17 +39,31 @@ export class DisplayUsersComponent implements OnInit {
   }
 
   displayAllUsers(){
-   this.httpService.getAllUsers().subscribe(response=> this.users =  Object.keys(response)
-   .map(function(key) {
-       return response[key];
-   }));
+
+    // VALIDIEREN OB RESPONSE NULL IST ODER NICHT
+
+   this.httpService.getAllUsers().subscribe(response=>
+    // this.users =  Object.keys(response)
+    //   .map(function(key) {
+    //     return response[key];
+    // })
+    {console.log(response)}
+   );
+
   }
 
   onDelete(event) {
-    // Index rausholen
     let index = event.target.id;
+    let original= this.users;
+    let filtered = original.filter(function(value){
+      return value.id != index;
+  });
+    this.users = filtered;
     this.httpService.deleteUser(index);
-    // Frage deleten von Array und Firebase?
+  }
+
+  onEdit(event){
+    console.log("edit");
   }
 
 
