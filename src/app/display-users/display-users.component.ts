@@ -2,7 +2,7 @@ import { DisplayService } from './display.service';
 import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
 import { SelectItem, PrimeNGConfig } from "primeng/api";
-
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-display-users',
@@ -42,7 +42,20 @@ export class DisplayUsersComponent implements OnInit {
 
     // VALIDIEREN OB RESPONSE NULL IST ODER NICHT
 
-   this.httpService.getAllUsers().subscribe(response=>
+   this.httpService.getAllUsers()
+   .pipe(
+    map(responseData => {
+      let userArray = [];
+      for (const key in responseData) {
+        if (responseData.hasOwnProperty(key)) {
+          userArray.push({ ...responseData[key], idd: key });
+        }
+      }
+      return userArray;
+    })
+  )
+
+   .subscribe(response=>
     // this.users =  Object.keys(response)
     //   .map(function(key) {
     //     return response[key];

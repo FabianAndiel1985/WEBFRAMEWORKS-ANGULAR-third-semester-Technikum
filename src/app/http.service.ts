@@ -10,7 +10,7 @@ export class HttpService {
   constructor(private httpClient:HttpClient) { }
 
   getAllUsers() {
-   return this.httpClient.get("https://useradministration-55705-default-rtdb.firebaseio.com/users.json")
+   return this.httpClient.get("https://useradministration-55705-default-rtdb.firebaseio.com/users.json");
   }
 
   signUpUser(user:User) {
