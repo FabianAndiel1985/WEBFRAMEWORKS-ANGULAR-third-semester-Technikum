@@ -18,7 +18,7 @@ export class HttpService {
   }
 
   deleteUser(index:string) {
-    this.httpClient.delete(`https://useradministration-55705-default-rtdb.firebaseio.com/users/u${index}.json`).subscribe(response=>console.log(response));
+    this.httpClient.delete(`https://useradministration-55705-default-rtdb.firebaseio.com/users/${index}.json`).subscribe(response=>console.log(response));
   }
 
 }

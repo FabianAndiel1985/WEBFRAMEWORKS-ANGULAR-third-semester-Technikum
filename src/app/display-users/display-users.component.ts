@@ -48,31 +48,22 @@ export class DisplayUsersComponent implements OnInit {
       let userArray = [];
       for (const key in responseData) {
         if (responseData.hasOwnProperty(key)) {
-          userArray.push({ ...responseData[key], idd: key });
+          userArray.push({ ...responseData[key], id: key });
         }
       }
       return userArray;
     })
   )
-
    .subscribe(response=>
-    // this.users =  Object.keys(response)
-    //   .map(function(key) {
-    //     return response[key];
-    // })
-    {console.log(response)}
+    {this.users =  response}
    );
 
   }
 
   onDelete(event) {
     let index = event.target.id;
-    let original= this.users;
-    let filtered = original.filter(function(value){
-      return value.id != index;
-  });
-    this.users = filtered;
     this.httpService.deleteUser(index);
+    this.displayAllUsers();
   }
 
   onEdit(event){

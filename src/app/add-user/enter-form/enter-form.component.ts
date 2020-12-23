@@ -11,13 +11,12 @@ export class EnterFormComponent implements OnInit {
 
   constructor(private httpService:HttpService) { }
 
-    id:string;
     firstname:string;
     lastname:string;
     birthday:string;
 
     onSubmit() {
-      let user = new User(this.id,this.firstname,this.lastname,this.birthday);
+      let user = new User(this.firstname,this.lastname,this.birthday);
       this.httpService.signUpUser(user);
     }
 
