@@ -15,6 +15,7 @@ import {SelectButtonModule} from 'primeng/selectbutton';
 import {HttpClientModule} from '@angular/common/http';
 import {ButtonModule} from 'primeng/button';
 import { FormsModule } from '@angular/forms';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 
 
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     AddUserComponent,
     EnterFormComponent,
     LandingComponent,
-    DisplayUsersComponent
+    DisplayUsersComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

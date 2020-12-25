@@ -1,0 +1,37 @@
+<div class="p-mx-auto w-25 border">
+
+  <h5> Update User </h5>
+  <div class="p-grid p-fluid">
+
+    <div class="p-col-12 ">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input [(ngModel)]="firstname" type="text" pInputText placeholder="firstname">
+          </div>
+      </div>
+
+      <div class="p-col-12">
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input [(ngModel)]="lastname"  type="text" pInputText placeholder="Nachname">
+          </div>
+        </div>
+
+        <div class="p-col-12">
+          <div class="p-inputgroup">
+            <span class="p-inputgroup-addon"><i class="pi pi-calendar"></i></span>
+            <input [(ngModel)]="birthday"  type="date" pInputText placeholder="Geburtsdatum">
+          </div>
+        </div>
+
+        <div class="p-col-12">
+          <div class="p-inputgroup">
+            <button pButton (click)="onSubmit()" type="button" label="Submit  User" class="p-button-secondary">
+              Update User
+            </button>
+          </div>
+        </div>
+
+  </div>
+
+</div>

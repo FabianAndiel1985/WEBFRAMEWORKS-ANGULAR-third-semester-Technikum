@@ -3,6 +3,8 @@ import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
 import { SelectItem, PrimeNGConfig } from "primeng/api";
 import { map } from 'rxjs/operators';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-display-users',
@@ -17,7 +19,7 @@ export class DisplayUsersComponent implements OnInit {
   value1: string = "off";
 
 
-  constructor(private primeNGConfig: PrimeNGConfig, private httpService:HttpService, private displayService:DisplayService) {
+  constructor(private primeNGConfig: PrimeNGConfig, private httpService:HttpService, private displayService:DisplayService,private router:Router) {
     this.stateOptions = [
       { label: "Off", value: "off" },
       { label: "On", value: "on" }
@@ -67,7 +69,10 @@ export class DisplayUsersComponent implements OnInit {
   }
 
   onEdit(event){
-    console.log("edit");
+    let index = event.target.id;
+    console.log(index);
+    this.httpService.emitChosenUser(index);
+    this.router.navigate(['./updateUserComponent']);
   }
 
 
