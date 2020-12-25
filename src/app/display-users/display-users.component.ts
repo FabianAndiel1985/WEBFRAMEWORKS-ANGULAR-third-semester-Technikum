@@ -68,6 +68,10 @@ export class DisplayUsersComponent implements OnInit {
     this.displayAllUsers();
   }
 
+  filter() {
+    console.log("Yolo Im filtering");
+  }
+
   onEdit(event){
     let index = event.target.id;
     console.log(index);
