@@ -19,7 +19,7 @@ export class DisplayUsersComponent implements OnInit {
   value1: string = "off";
 
 
-  constructor(private primeNGConfig: PrimeNGConfig, private httpService:HttpService, private displayService:DisplayService,private router:Router) {
+  constructor(private primeNGConfig: PrimeNGConfig, private httpService:HttpService, private router:Router) {
     this.stateOptions = [
       { label: "Off", value: "off" },
       { label: "On", value: "on" }
@@ -68,7 +68,7 @@ export class DisplayUsersComponent implements OnInit {
   }
 
   filter(event){
-    console.log(event.target.value);
+    const searchterm = event.target.value.toLowerCase()
     this.httpService.getAllUsers()
    .pipe(
     map(responseData => {
@@ -79,7 +79,11 @@ export class DisplayUsersComponent implements OnInit {
           userArray.push({ ...responseData[key], id: key });
         }
       }
-      return userArray.filter(el=> el.lastname=="Lesner");
+      console.log(searchterm.length);
+
+       return userArray.filter(el=> el.lastname.toLowerCase().substring(0,searchterm.length)==searchterm);
+
+      // return userArray;
     })
   )
    .subscribe(response=>
@@ -87,6 +91,7 @@ export class DisplayUsersComponent implements OnInit {
    );
 
   }
+
 
   onEdit(event){
     let index = event.target.id;

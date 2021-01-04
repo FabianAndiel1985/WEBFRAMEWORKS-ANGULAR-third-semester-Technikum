@@ -16,12 +16,12 @@ export class UpdateUserComponent implements OnInit {
 
   constructor(private httpService:HttpService, private router:Router) { }
 
-  id:string;
-  firstname:string;
-  lastname:string;
-  birthday:string;
+   id:string;
+   firstname:string;
+   lastname:string;
+   birthday:string;
 
-  onSubmit() {
+  onSubmit():void {
     let user = new User(this.firstname,this.lastname,this.birthday);
     this.httpService.updateUser(this.id,user);
     this.router.navigate(['./displayUsers']);

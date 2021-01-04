@@ -7,7 +7,4 @@ export class DisplayService {
 
   constructor() { }
 
-
-
-
 }
