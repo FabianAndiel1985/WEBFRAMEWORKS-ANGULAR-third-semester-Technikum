@@ -42,8 +42,6 @@ export class DisplayUsersComponent implements OnInit {
 
   displayAllUsers(){
 
-    // VALIDIEREN OB RESPONSE NULL IST ODER NICHT
-
    this.httpService.getAllUsers()
    .pipe(
     map(responseData => {
@@ -64,17 +62,18 @@ export class DisplayUsersComponent implements OnInit {
 
   onDelete(event) {
     let index = event.target.id;
-    this.httpService.deleteUser(index);
+    this.httpService.deleteUser(index).subscribe(response =>{
     this.displayAllUsers();
+  } )
   }
 
-  filter() {
-    console.log("Yolo Im filtering");
+  filter(event){
+    console.log(event.target.value);
+
   }
 
   onEdit(event){
     let index = event.target.id;
-    console.log(index);
     this.httpService.emitChosenUser(index);
     this.router.navigate(['./updateUserComponent']);
   }

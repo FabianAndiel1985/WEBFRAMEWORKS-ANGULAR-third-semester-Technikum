@@ -1,6 +1,7 @@
 import { User } from './../types';
 import { HttpService } from './../http.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -13,7 +14,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 export class UpdateUserComponent implements OnInit {
 
-  constructor(private httpService:HttpService) { }
+  constructor(private httpService:HttpService, private router:Router) { }
 
   id:string;
   firstname:string;
@@ -23,6 +24,8 @@ export class UpdateUserComponent implements OnInit {
   onSubmit() {
     let user = new User(this.firstname,this.lastname,this.birthday);
     this.httpService.updateUser(this.id,user);
+    this.router.navigate(['./displayUsers']);
+
   }
 
 ngOnInit(): void {
