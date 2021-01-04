@@ -69,6 +69,22 @@ export class DisplayUsersComponent implements OnInit {
 
   filter(event){
     console.log(event.target.value);
+    this.httpService.getAllUsers()
+   .pipe(
+    map(responseData => {
+      let userArray = [];
+      console.log(responseData);
+      for (const key in responseData) {
+        if (responseData.hasOwnProperty(key)) {
+          userArray.push({ ...responseData[key], id: key });
+        }
+      }
+      return userArray.filter(el=> el.lastname=="Lesner");
+    })
+  )
+   .subscribe(response=>
+    {this.users =  response}
+   );
 
   }
 
