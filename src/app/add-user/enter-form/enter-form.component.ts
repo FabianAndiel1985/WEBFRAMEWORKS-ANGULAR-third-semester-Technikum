@@ -15,9 +15,15 @@ export class EnterFormComponent implements OnInit {
     lastname:string;
     birthday:string;
 
-    onSubmit() {
+    onSubmit():void {
       let user = new User(this.firstname,this.lastname,this.birthday);
+      this.clearFields();
       this.httpService.signUpUser(user);
+    }
+
+    private clearFields():void {
+      this.firstname = ' ';
+      this.lastname = ' ';
     }
 
   ngOnInit(): void {

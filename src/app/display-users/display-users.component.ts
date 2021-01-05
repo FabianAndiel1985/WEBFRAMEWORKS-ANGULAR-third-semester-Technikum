@@ -1,3 +1,4 @@
+import { User } from './../types';
 import { DisplayService } from './display.service';
 import { HttpService } from './../http.service';
 import { Component, OnInit } from '@angular/core';
@@ -26,11 +27,11 @@ export class DisplayUsersComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {
+  ngOnInit():void {
     this.primeNGConfig.ripple = true;
   }
 
-  onToggle() {
+  public onToggle():void {
     if(this.value1 == "off") {
       this.value1 = "on";
       this.displayAllUsers();
@@ -40,60 +41,51 @@ export class DisplayUsersComponent implements OnInit {
     }
   }
 
-  displayAllUsers(){
-
+  public displayAllUsers():void{
    this.httpService.getAllUsers()
    .pipe(
-    map(responseData => {
-      let userArray = [];
+    map(response => this.transformToArray(response)
+    )
+  )
+   .subscribe(response=>
+    {this.users =  response}
+   );
+  }
+
+  private transformToArray(responseData):User[]{
+    let userArray = [];
       for (const key in responseData) {
         if (responseData.hasOwnProperty(key)) {
           userArray.push({ ...responseData[key], id: key });
         }
       }
       return userArray;
-    })
-  )
-   .subscribe(response=>
-    {this.users =  response}
-   );
-
   }
 
-  onDelete(event) {
+  public onDelete(event):void {
     let index = event.target.id;
     this.httpService.deleteUser(index).subscribe(response =>{
     this.displayAllUsers();
   } )
   }
 
-  filter(event){
+
+  public filter(event):void{
     const searchterm = event.target.value.toLowerCase()
     this.httpService.getAllUsers()
    .pipe(
-    map(responseData => {
-      let userArray = [];
-      console.log(responseData);
-      for (const key in responseData) {
-        if (responseData.hasOwnProperty(key)) {
-          userArray.push({ ...responseData[key], id: key });
-        }
-      }
-      console.log(searchterm.length);
-
-       return userArray.filter(el=> el.lastname.toLowerCase().substring(0,searchterm.length)==searchterm);
-
-      // return userArray;
-    })
+    map(response => this.transformToArray(response)
+    )
   )
    .subscribe(response=>
-    {this.users =  response}
+    {
+      let userArray =  response.filter(el=> el.lastname.toLowerCase().substring(0,searchterm.length)==searchterm);
+      this.users =  userArray}
    );
 
   }
 
-
-  onEdit(event){
+  public onEdit(event):void{
     let index = event.target.id;
     this.httpService.emitChosenUser(index);
     this.router.navigate(['./updateUserComponent']);

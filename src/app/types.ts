@@ -1,8 +1,8 @@
 export class User {
 
-  private firstname:string
-  private lastname:string
-  private birthday:string
+  firstname:string
+  lastname:string
+  birthday:string
 
     constructor(firstname:string,lastname:string,birthday:string){
       this.firstname=firstname;
